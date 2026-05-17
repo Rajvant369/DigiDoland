@@ -2302,13 +2302,50 @@ footer{
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-logo">DIGIDOLAND</div>
-  <div class="footer-copy">© 2026 DIGIDOLAND. All rights reserved.</div>
-  <div class="footer-links">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms</a>
-    <a href="#">Contact</a>
+<footer style="background:#0A0A0A;border-top:1px solid rgba(212,175,55,0.12);padding:64px 60px 40px;display:block;">
+  <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:48px;max-width:1100px;margin:0 auto 48px;">
+
+    <!-- Left: Brand -->
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+        <div style="width:42px;height:42px;background:linear-gradient(135deg,#AA7C11,#D4AF37);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:#0A0A0A;flex-shrink:0;">D</div>
+        <span style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;background:linear-gradient(135deg,#D4AF37,#F5C842);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;">DIGIDOLAND®</span>
+      </div>
+      <p style="font-size:14px;color:#666660;line-height:1.75;max-width:280px;margin-bottom:24px;">India's premium digital productivity system. Designed for ambitious people who want to own their time, goals, and life.</p>
+      <a href="mailto:support@digidoland.com" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#888880;text-decoration:none;transition:color 0.3s;" onmouseenter="this.style.color='#D4AF37'" onmouseleave="this.style.color='#888880'">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        support@digidoland.com
+      </a>
+    </div>
+
+    <!-- Middle: Product -->
+    <div>
+      <div style="font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#D4AF37;margin-bottom:20px;">PRODUCT</div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <a href="#features" style="font-size:14px;color:#888880;text-decoration:none;transition:color 0.3s;" onmouseenter="this.style.color='#E8E4DC'" onmouseleave="this.style.color='#888880'">Features</a>
+        <a href="#categories" style="font-size:14px;color:#888880;text-decoration:none;transition:color 0.3s;" onmouseenter="this.style.color='#E8E4DC'" onmouseleave="this.style.color='#888880'">Modules</a>
+        <a href="#pricing" style="font-size:14px;color:#888880;text-decoration:none;transition:color 0.3s;" onmouseenter="this.style.color='#E8E4DC'" onmouseleave="this.style.color='#888880'">Pricing</a>
+        <a href="#faq" style="font-size:14px;color:#888880;text-decoration:none;transition:color 0.3s;" onmouseenter="this.style.color='#E8E4DC'" onmouseleave="this.style.color='#888880'">FAQ</a>
+      </div>
+    </div>
+
+    <!-- Right: Legal -->
+    <div>
+      <div style="font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#D4AF37;margin-bottom:20px;">LEGAL</div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <a href="#" onclick="event.preventDefault();openLegal('terms')" style="font-size:14px;color:#888880;text-decoration:none;transition:color 0.3s;cursor:pointer;" onmouseenter="this.style.color='#E8E4DC'" onmouseleave="this.style.color='#888880'">Terms of Use</a>
+        <a href="#" onclick="event.preventDefault();openLegal('privacy')" style="font-size:14px;color:#888880;text-decoration:none;transition:color 0.3s;cursor:pointer;" onmouseenter="this.style.color='#E8E4DC'" onmouseleave="this.style.color='#888880'">Privacy Policy</a>
+        <a href="#" onclick="event.preventDefault();openLegal('refund')" style="font-size:14px;color:#888880;text-decoration:none;transition:color 0.3s;cursor:pointer;" onmouseenter="this.style.color='#E8E4DC'" onmouseleave="this.style.color='#888880'">Refund Policy</a>
+        <a href="#" onclick="event.preventDefault();openLegal('license')" style="font-size:14px;color:#888880;text-decoration:none;transition:color 0.3s;cursor:pointer;" onmouseenter="this.style.color='#E8E4DC'" onmouseleave="this.style.color='#888880'">License</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div style="max-width:1100px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(212,175,55,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div style="font-size:12px;color:#555550;">© 2026 DIGIDOLAND. All rights reserved.</div>
+    <div style="font-size:12px;color:#555550;">Made with ✦ for ambitious minds.</div>
   </div>
 </footer>
 
@@ -2412,5 +2449,306 @@ function showPreview(id) {
 }
 
 </script>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     LEGAL MODALS — Terms, Privacy, Refund, License
+═══════════════════════════════════════════════════════════════ -->
+<style>
+.legal-overlay{
+  position:fixed;inset:0;z-index:9000;
+  background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);
+  display:none;align-items:center;justify-content:center;padding:24px;
+}
+.legal-overlay.open{display:flex;}
+.legal-modal{
+  background:#111111;border:1px solid rgba(212,175,55,0.25);
+  border-radius:20px;width:100%;max-width:720px;
+  max-height:85vh;overflow:hidden;
+  display:flex;flex-direction:column;
+  box-shadow:0 40px 100px rgba(0,0,0,0.7);
+  animation:modalIn 0.35s cubic-bezier(.22,1,.36,1);
+}
+@keyframes modalIn{from{opacity:0;transform:translateY(30px) scale(0.97);}to{opacity:1;transform:none;}}
+.legal-modal-head{
+  padding:28px 36px 20px;
+  border-bottom:1px solid rgba(212,175,55,0.12);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;
+  background:linear-gradient(135deg,rgba(212,175,55,0.08),transparent);
+}
+.legal-modal-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:700;
+  background:linear-gradient(135deg,#D4AF37,#F5C842);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.legal-modal-close{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+  color:#888;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;flex-shrink:0;
+}
+.legal-modal-close:hover{background:rgba(212,175,55,0.15);color:#D4AF37;border-color:rgba(212,175,55,0.3);}
+.legal-modal-body{
+  padding:28px 36px 36px;overflow-y:auto;
+  font-size:14px;color:#888880;line-height:1.85;
+}
+.legal-modal-body h3{
+  font-size:15px;font-weight:600;color:#E8E4DC;
+  margin:24px 0 8px;letter-spacing:0.3px;
+}
+.legal-modal-body h3:first-child{margin-top:0;}
+.legal-modal-body p{margin-bottom:12px;}
+.legal-modal-body ul{margin:8px 0 12px 0;padding-left:0;list-style:none;}
+.legal-modal-body ul li{padding:4px 0 4px 18px;position:relative;}
+.legal-modal-body ul li::before{content:'✦';position:absolute;left:0;color:#D4AF37;font-size:9px;top:7px;}
+.legal-modal-body a{color:#D4AF37;text-decoration:none;}
+.legal-modal-body strong{color:#E8E4DC;}
+.legal-date{font-size:12px;color:rgba(212,175,55,0.6);margin-bottom:20px;letter-spacing:0.5px;}
+</style>
+
+<!-- MODAL 1: TERMS OF USE -->
+<div class="legal-overlay" id="modal-terms" onclick="if(event.target===this)closeLegal('terms')">
+  <div class="legal-modal">
+    <div class="legal-modal-head">
+      <div class="legal-modal-title">Terms of Use</div>
+      <button class="legal-modal-close" onclick="closeLegal('terms')">✕</button>
+    </div>
+    <div class="legal-modal-body">
+      <div class="legal-date">Last updated: May 2026 &nbsp;|&nbsp; DIGIDOLAND®</div>
+      <p>By purchasing or downloading any product from DIGIDOLAND, you agree to the following Terms of Use. Please read them carefully before completing your purchase.</p>
+
+      <h3>1. License Grant</h3>
+      <p>Upon purchase, DIGIDOLAND grants you a <strong>personal, non-exclusive, non-transferable license</strong> to use the purchased digital product for your own personal productivity and planning purposes.</p>
+
+      <h3>2. Permitted Uses</h3>
+      <ul>
+        <li>Print unlimited copies for your own personal use</li>
+        <li>Use digitally on your personal devices (phone, laptop, tablet, iPad)</li>
+        <li>Fill in, edit and customise the planner for your own planning needs</li>
+        <li>Access the product on multiple devices you personally own</li>
+      </ul>
+
+      <h3>3. Prohibited Uses</h3>
+      <ul>
+        <li>You may <strong>not</strong> resell, redistribute, or share the files with others</li>
+        <li>You may <strong>not</strong> upload the files to any sharing platform (Google Drive public links, Telegram, WhatsApp groups, etc.)</li>
+        <li>You may <strong>not</strong> use any part of this product to create derivative products for sale</li>
+        <li>You may <strong>not</strong> claim authorship or ownership of the designs</li>
+        <li>You may <strong>not</strong> use the product for commercial printing and resale</li>
+        <li>Removing copyright notices, branding or watermarks is strictly prohibited</li>
+      </ul>
+
+      <h3>4. Intellectual Property</h3>
+      <p>All designs, layouts, graphics, copy and content within DIGIDOLAND products are the exclusive intellectual property of DIGIDOLAND. All rights reserved. Unauthorised reproduction or distribution is a violation of applicable copyright laws.</p>
+
+      <h3>5. Digital Product Nature</h3>
+      <p>All products are delivered as digital downloads. Due to the nature of digital products, <strong>no physical item will be shipped</strong>. You will receive a download link via email or your purchase confirmation page immediately after payment.</p>
+
+      <h3>6. No Warranty</h3>
+      <p>DIGIDOLAND products are provided "as is." While we strive for the highest quality, we make no warranties regarding specific outcomes, results or productivity improvements from use of our planners.</p>
+
+      <h3>7. Limitation of Liability</h3>
+      <p>DIGIDOLAND shall not be liable for any indirect, incidental, or consequential damages arising from the use of our products. Our total liability shall not exceed the amount paid for the product.</p>
+
+      <h3>8. Governing Law</h3>
+      <p>These Terms shall be governed by and construed in accordance with the laws of India. Any disputes shall be subject to the exclusive jurisdiction of courts in India.</p>
+
+      <h3>9. Contact</h3>
+      <p>For any queries regarding these Terms, contact us at <a href="mailto:support@digidoland.com">support@digidoland.com</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2: PRIVACY POLICY -->
+<div class="legal-overlay" id="modal-privacy" onclick="if(event.target===this)closeLegal('privacy')">
+  <div class="legal-modal">
+    <div class="legal-modal-head">
+      <div class="legal-modal-title">Privacy Policy</div>
+      <button class="legal-modal-close" onclick="closeLegal('privacy')">✕</button>
+    </div>
+    <div class="legal-modal-body">
+      <div class="legal-date">Last updated: May 2026 &nbsp;|&nbsp; DIGIDOLAND®</div>
+      <p>DIGIDOLAND is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or purchase our products.</p>
+
+      <h3>1. Information We Collect</h3>
+      <ul>
+        <li><strong>Personal Information:</strong> Name, email address, and payment information collected at checkout</li>
+        <li><strong>Transaction Data:</strong> Purchase history, order details, and download records</li>
+        <li><strong>Usage Data:</strong> Pages visited, time spent on site, browser type and device information</li>
+        <li><strong>Communication Data:</strong> Any messages or emails you send us</li>
+      </ul>
+
+      <h3>2. How We Use Your Information</h3>
+      <ul>
+        <li>To process and fulfil your orders and deliver digital products</li>
+        <li>To send order confirmation and download instructions via email</li>
+        <li>To respond to customer support queries</li>
+        <li>To send occasional product updates and offers (you may opt out at any time)</li>
+        <li>To improve our website and product offerings</li>
+        <li>To comply with legal obligations</li>
+      </ul>
+
+      <h3>3. Payment Processing</h3>
+      <p>All payments are processed securely through <strong>Razorpay</strong>, a PCI-DSS compliant payment gateway. DIGIDOLAND does not store your card or banking details. For Razorpay's privacy practices, visit <a href="https://razorpay.com/privacy/" target="_blank">razorpay.com/privacy</a></p>
+
+      <h3>4. Data Sharing</h3>
+      <p>We do <strong>not</strong> sell, trade, or rent your personal information to third parties. We may share data only with:</p>
+      <ul>
+        <li>Payment processors (Razorpay) solely to complete transactions</li>
+        <li>Email service providers to deliver order confirmations</li>
+        <li>Legal authorities when required by law</li>
+      </ul>
+
+      <h3>5. Cookies</h3>
+      <p>Our website may use cookies to improve your browsing experience. You can disable cookies in your browser settings at any time. Disabling cookies may affect some website functionality.</p>
+
+      <h3>6. Data Retention</h3>
+      <p>We retain your personal information for as long as necessary to fulfil the purposes described in this policy, or as required by law. You may request deletion of your data at any time by contacting us.</p>
+
+      <h3>7. Your Rights</h3>
+      <ul>
+        <li>Right to access the personal data we hold about you</li>
+        <li>Right to correct inaccurate or incomplete data</li>
+        <li>Right to request deletion of your personal data</li>
+        <li>Right to opt out of marketing communications</li>
+      </ul>
+
+      <h3>8. Security</h3>
+      <p>We implement appropriate technical and organisational measures to protect your personal information against unauthorised access, alteration, disclosure or destruction.</p>
+
+      <h3>9. Contact</h3>
+      <p>For privacy-related queries, email us at <a href="mailto:support@digidoland.com">support@digidoland.com</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 3: REFUND POLICY -->
+<div class="legal-overlay" id="modal-refund" onclick="if(event.target===this)closeLegal('refund')">
+  <div class="legal-modal">
+    <div class="legal-modal-head">
+      <div class="legal-modal-title">Refund Policy</div>
+      <button class="legal-modal-close" onclick="closeLegal('refund')">✕</button>
+    </div>
+    <div class="legal-modal-body">
+      <div class="legal-date">Last updated: May 2026 &nbsp;|&nbsp; DIGIDOLAND®</div>
+      <p>At DIGIDOLAND, we stand behind the quality of our products. Please read our refund policy carefully before making a purchase.</p>
+
+      <h3>1. Digital Product Policy</h3>
+      <p>All DIGIDOLAND products are <strong>digital downloads delivered instantly</strong> upon payment. Due to the nature of digital products — which cannot be "returned" once accessed — we have a carefully defined refund policy.</p>
+
+      <h3>2. No-Questions-Asked Refund — Within 24 Hours</h3>
+      <p>If you have <strong>not yet downloaded</strong> your product and request a refund within <strong>24 hours</strong> of purchase, we will issue a full refund with no questions asked.</p>
+
+      <h3>3. Eligible Refund Scenarios</h3>
+      <ul>
+        <li>You were charged multiple times for the same order (duplicate payment)</li>
+        <li>You did not receive your download link after purchase and we were unable to resolve it</li>
+        <li>The product file is corrupt and we are unable to provide a working replacement</li>
+        <li>Technical issues on our end prevented access to the product</li>
+      </ul>
+
+      <h3>4. Non-Refundable Scenarios</h3>
+      <ul>
+        <li>You have already downloaded and accessed the product</li>
+        <li>You changed your mind after downloading the files</li>
+        <li>You claim the product "didn't work for you" without a specific technical issue</li>
+        <li>You purchased the wrong product (we can offer an exchange instead)</li>
+        <li>More than 7 days have passed since your purchase</li>
+      </ul>
+
+      <h3>5. How to Request a Refund</h3>
+      <p>To request a refund, email us at <a href="mailto:support@digidoland.com">support@digidoland.com</a> with:</p>
+      <ul>
+        <li>Your full name and email used at checkout</li>
+        <li>Order ID / payment reference number</li>
+        <li>Reason for refund request</li>
+      </ul>
+      <p>We aim to respond to all refund requests within <strong>48 business hours</strong>. Approved refunds are processed within 5–7 business days depending on your payment method.</p>
+
+      <h3>6. Exchange Policy</h3>
+      <p>If you purchased the wrong product, we're happy to exchange it for the correct one of equal or lesser value. Contact us at <a href="mailto:support@digidoland.com">support@digidoland.com</a> within 48 hours of purchase.</p>
+
+      <h3>7. Contact</h3>
+      <p>Refund queries: <a href="mailto:support@digidoland.com">support@digidoland.com</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 4: LICENSE -->
+<div class="legal-overlay" id="modal-license" onclick="if(event.target===this)closeLegal('license')">
+  <div class="legal-modal">
+    <div class="legal-modal-head">
+      <div class="legal-modal-title">License Agreement</div>
+      <button class="legal-modal-close" onclick="closeLegal('license')">✕</button>
+    </div>
+    <div class="legal-modal-body">
+      <div class="legal-date">Last updated: May 2026 &nbsp;|&nbsp; DIGIDOLAND®</div>
+      <p>This License Agreement ("Agreement") is between DIGIDOLAND ("Licensor") and you ("Licensee"). By purchasing and downloading any DIGIDOLAND product, you accept the terms of this Agreement.</p>
+
+      <h3>1. Type of License</h3>
+      <p>DIGIDOLAND products are sold under a <strong>Personal Use License</strong>. This license is granted to one individual (the purchaser) and is non-transferable.</p>
+
+      <h3>2. What You CAN Do</h3>
+      <ul>
+        <li>✅ Use the product on all your personal devices</li>
+        <li>✅ Print unlimited copies for your own personal use</li>
+        <li>✅ Fill in, customise and use digitally for personal planning</li>
+        <li>✅ Use the bonus packs included with your purchase personally</li>
+        <li>✅ Keep and use the files indefinitely after download</li>
+      </ul>
+
+      <h3>3. What You CANNOT Do</h3>
+      <ul>
+        <li>❌ Resell, redistribute or share the files with anyone else</li>
+        <li>❌ Upload to any public or private file-sharing platform</li>
+        <li>❌ Use designs to create products for commercial sale</li>
+        <li>❌ Modify and sell as your own product</li>
+        <li>❌ Share via WhatsApp, Telegram, Discord or any other platform</li>
+        <li>❌ Transfer this license to another person</li>
+        <li>❌ Use for any commercial, business or client-facing purpose without a Commercial License</li>
+      </ul>
+
+      <h3>4. Commercial License</h3>
+      <p>If you wish to use DIGIDOLAND products for commercial purposes (e.g., using as part of a coaching programme, distributing to clients, or using within a business), a separate <strong>Commercial License</strong> is required. Contact us at <a href="mailto:support@digidoland.com">support@digidoland.com</a> for commercial licensing enquiries.</p>
+
+      <h3>5. Ownership</h3>
+      <p>This license does not transfer ownership of the product to you. DIGIDOLAND retains all intellectual property rights to the designs, layouts, and content. You are purchasing the right to use the product under the terms of this license only.</p>
+
+      <h3>6. Duration</h3>
+      <p>This license is perpetual — it does not expire. Once purchased, you may continue to use the product under these terms indefinitely.</p>
+
+      <h3>7. Violation & Termination</h3>
+      <p>Any violation of this license agreement immediately terminates your right to use the product. DIGIDOLAND reserves the right to take legal action for copyright infringement, including seeking damages.</p>
+
+      <h3>8. Updates</h3>
+      <p>If DIGIDOLAND releases updated versions of a product you have purchased, we will endeavour to provide access to updates. Updates are not guaranteed but are provided as a goodwill gesture.</p>
+
+      <h3>9. Contact</h3>
+      <p>For licensing questions, email <a href="mailto:support@digidoland.com">support@digidoland.com</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openLegal(id){
+  document.getElementById('modal-'+id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLegal(id){
+  document.getElementById('modal-'+id).classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    ['terms','privacy','refund','license'].forEach(id=>{
+      document.getElementById('modal-'+id).classList.remove('open');
+    });
+    document.body.style.overflow='';
+  }
+});
+</script>
+
 </body>
 </html>
