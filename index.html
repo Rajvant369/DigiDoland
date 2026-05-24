@@ -998,8 +998,21 @@ footer{
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#pricing">Pricing</a></li>
   </ul>
-  <a href="https://digidoland.lemonsqueezy.com/checkout/buy/44a8a10a-5352-40a3-9400-851d77d05732" target="_blank" class="nav-cta">Get Bundle →</a>
+  <a href="https://digidoland.lemonsqueezy.com/checkout/buy/44a8a10a-5352-40a3-9400-851d77d05732" target="_blank" class="nav-cta nav-cta-desktop">Get Bundle →</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
+  <a href="#categories" onclick="closeMobileNav()">Categories</a>
+  <a href="#features" onclick="closeMobileNav()">Features</a>
+  <a href="#testimonials" onclick="closeMobileNav()">Reviews</a>
+  <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="https://digidoland.lemonsqueezy.com/checkout/buy/44a8a10a-5352-40a3-9400-851d77d05732" target="_blank" class="mobile-cta-btn">Get Bundle → ₹999</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -2690,6 +2703,507 @@ function showPreview(id, btn){
   document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
   if(btn) btn.classList.add('active');
 }
+</script>
+
+<!-- ============================================================
+     MOBILE-FIRST RESPONSIVE OVERHAUL — DIGIDOLAND
+     Targets: iPhone SE → iPhone 16 Pro Max, Android, Tablets
+     ============================================================ -->
+<style>
+
+/* ── HAMBURGER BUTTON ── */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  cursor:pointer;
+  padding:8px;
+  background:none;
+  border:none;
+  z-index:200;
+  -webkit-tap-highlight-color:transparent;
+}
+.hamburger span{
+  display:block;width:24px;height:2px;
+  background:var(--gold);border-radius:2px;
+  transition:transform 0.3s ease,opacity 0.3s ease;
+}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ── MOBILE NAV OVERLAY ── */
+.mobile-nav{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(8,8,8,0.97);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  z-index:9990;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  padding:40px 24px;
+  opacity:0;
+  transition:opacity 0.3s ease;
+}
+.mobile-nav.open{
+  display:flex;
+  opacity:1;
+}
+.mobile-nav-close{
+  position:absolute;top:24px;right:24px;
+  background:none;border:none;
+  font-size:24px;color:var(--muted);
+  cursor:pointer;padding:8px;
+  -webkit-tap-highlight-color:transparent;
+  transition:color 0.3s;
+}
+.mobile-nav-close:hover{color:var(--gold);}
+.mobile-nav a{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,6vw,32px);font-weight:700;
+  color:var(--text);text-decoration:none;
+  letter-spacing:2px;text-transform:uppercase;
+  transition:color 0.3s;
+}
+.mobile-nav a:hover{color:var(--gold);}
+.mobile-cta-btn{
+  display:inline-block;
+  background:linear-gradient(135deg,#AA7C11,#D4AF37,#F5C842) !important;
+  color:#0A0A0A !important;font-weight:700;
+  font-size:16px;padding:16px 40px;
+  border-radius:50px;text-decoration:none;
+  margin-top:12px;letter-spacing:0.5px;
+  box-shadow:0 8px 30px rgba(212,175,55,0.35);
+}
+
+/* ── HIDE DESKTOP-ONLY NAV ITEMS ON MOBILE ── */
+@media(min-width:901px){
+  .hamburger{display:none!important;}
+  .mobile-nav{display:none!important;}
+}
+
+/* ══════════════════════════════════════════════
+   MAX-WIDTH: 900px  — Tablet & Mobile
+   ══════════════════════════════════════════════ */
+@media(max-width:900px){
+
+  /* Disable custom cursor (not useful on touch) */
+  .cursor,.cursor-ring{display:none!important;}
+
+  /* ── NAV ── */
+  nav{
+    padding:14px 20px!important;
+  }
+  .nav-links{display:none!important;}
+  .nav-cta-desktop{display:none!important;}
+  .hamburger{display:flex!important;}
+
+  /* ── HERO ── */
+  .hero{
+    padding:96px 20px 56px!important;
+    flex-direction:column;
+    min-height:auto;
+    align-items:flex-start;
+  }
+  .hero-content{
+    max-width:100%;
+    text-align:left;
+  }
+  .hero-badge{margin-bottom:20px;}
+  .hero-sub{
+    max-width:100%;
+    font-size:clamp(15px,4vw,18px);
+    margin-bottom:32px;
+  }
+  .hero-ctas{
+    flex-direction:column;
+    align-items:stretch;
+    gap:12px;
+    width:100%;
+    margin-bottom:40px;
+  }
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-secondary,
+  .hero-ctas .nav-cta{
+    width:100%;
+    justify-content:center;
+    text-align:center;
+    padding:16px 24px;
+    font-size:15px;
+  }
+  .hero-stats{
+    gap:0;
+    width:100%;
+    justify-content:flex-start;
+  }
+  .hero-stat{
+    flex:1;
+    padding-left:14px;
+    min-width:0;
+  }
+  .hero-stat-num{font-size:clamp(20px,5vw,32px);}
+  .hero-stat-label{font-size:10px;letter-spacing:0.5px;}
+
+  /* ── HERO VISUAL (inline absolute positioned video) ── */
+  .hero-visual,
+  .hero > div[style*="right:120px"],
+  .hero > div[style*="right: 120px"]{
+    position:relative!important;
+    right:auto!important;
+    top:auto!important;
+    transform:none!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin-top:36px!important;
+    border-radius:16px;
+    overflow:hidden;
+  }
+  /* Video within hero */
+  .hero video,
+  .hero > div video{
+    width:100%!important;
+    max-height:280px!important;
+    object-fit:cover;
+    border-radius:12px;
+    display:block;
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar{
+    padding:16px 16px!important;
+    gap:12px 20px!important;
+    justify-content:flex-start;
+  }
+  .trust-item{font-size:12px;gap:8px;}
+
+  /* ── SECTION PADDING (class-based) ── */
+  .section-pad{padding:60px 20px!important;}
+  .preview-section{padding:60px 20px!important;}
+  .final-cta{padding:80px 20px!important;}
+  footer{padding:40px 20px!important;flex-direction:column;text-align:center;}
+
+  /* ── SECTION PADDING (inline style override via attribute selectors) ── */
+  section[style*="padding:80px 60px"],
+  section[style*="padding: 80px 60px"]{
+    padding:56px 20px!important;
+  }
+  section[style*="padding:100px 60px"],
+  section[style*="padding: 100px 60px"]{
+    padding:60px 20px!important;
+  }
+  section[style*="padding:120px 60px"],
+  section[style*="padding: 120px 60px"]{
+    padding:64px 20px!important;
+  }
+  section[style*="padding:160px 60px"],
+  section[style*="padding: 160px 60px"]{
+    padding:72px 20px!important;
+  }
+
+  /* ── CATEGORIES ── */
+  .categories-grid{grid-template-columns:1fr!important;}
+  .cat-card{padding:28px 20px;}
+  .cat-num{font-size:44px;}
+
+  /* ── BENTO ── */
+  .bento-grid{
+    grid-template-columns:1fr!important;
+    gap:12px;
+  }
+  .bento-1,.bento-2,.bento-3,
+  .bento-4,.bento-5,.bento-6{
+    grid-column:span 1!important;
+    grid-row:span 1!important;
+  }
+  .bento-card{padding:24px 20px;}
+  .bento-big-num{font-size:56px;}
+
+  /* ── BEFORE / AFTER ── */
+  .before-after{
+    grid-template-columns:1fr!important;
+    gap:0;
+  }
+  .ba-side{padding:28px 20px;}
+  .ba-divider{
+    flex-direction:row;
+    padding:12px 0;
+    justify-content:center;
+  }
+  .ba-arrow{
+    font-size:28px;
+    transform:rotate(90deg);
+    display:inline-block;
+  }
+
+  /* ── TRANSFORMATION SECTION INLINE GRIDS ── */
+  .reveal[style*="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px"],
+  .reveal[style*="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px"]{
+    grid-template-columns:1fr!important;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid{grid-template-columns:1fr!important;}
+  .testi-card{padding:24px 20px;}
+
+  /* ── COMPARISON TABLE ── */
+  .comparison-section{overflow-x:auto;}
+  .comparison-table{
+    min-width:480px;
+    font-size:12px;
+  }
+  .comparison-table td,
+  .comparison-table th{
+    padding:10px 12px!important;
+  }
+
+  /* ── FAQ ── */
+  .faq-list{max-width:100%;margin-top:36px;}
+  .faq-q{font-size:15px;padding:20px 0;}
+
+  /* ── PRICING CARD ── */
+  .pricing-card{margin:40px 0 0;}
+  .pricing-header{padding:28px 20px;}
+  .pricing-body{padding:24px 20px;}
+  .pricing-price{font-size:clamp(48px,12vw,72px);}
+
+  /* ── SCARCITY BAR ── */
+  .scarcity-bar{
+    padding:16px 16px!important;
+    flex-direction:column;
+    text-align:center;
+    gap:10px!important;
+  }
+  .countdown{justify-content:center;}
+
+  /* ── DEVICES GRID ── */
+  .devices-grid{grid-template-columns:repeat(2,1fr)!important;}
+  .device-card{padding:24px 16px;}
+
+  /* ── PREVIEW TABS & GRID ── */
+  .preview-tabs{justify-content:flex-start;gap:6px;}
+  .ptab{padding:8px 16px;font-size:12px;}
+  .preview-grid{grid-template-columns:1fr!important;}
+
+  /* ── FOOTER ── */
+  .footer-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+  }
+
+  /* ── CHECKOUT DUAL BUTTONS ── */
+  .checkout-btns{grid-template-columns:1fr!important;}
+  .pay-btn{padding:18px 16px;}
+
+  /* ── SECTION TITLE & SUBTITLE ── */
+  .section-title{font-size:clamp(28px,7vw,48px)!important;}
+  .section-sub{font-size:16px;}
+
+  /* ── WHO IS THIS FOR — inline grid ── */
+  div[style*="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px"]{
+    grid-template-columns:1fr!important;
+  }
+
+  /* ── PAIN POINTS — inline grid ── */
+  div[style*="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px"]{
+    grid-template-columns:1fr!important;
+  }
+
+  /* ── HOW IT WORKS — inline grid ── */
+  div[style*="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px"]{
+    grid-template-columns:1fr!important;
+  }
+
+  /* ── BONUSES — inline grid ── */
+  div[style*="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))"]{
+    grid-template-columns:1fr!important;
+  }
+
+  /* ── BONUS VALUE COUNTER STRIP ── */
+  div[style*="display:flex;align-items:center;justify-content:center;gap:0;max-width:860px"]{
+    flex-wrap:wrap!important;
+  }
+  div[style*="display:flex;align-items:center;justify-content:center;gap:0;max-width:860px"] > div{
+    flex:1 1 100px!important;
+    min-width:80px;
+  }
+
+  /* ── PAYMENT LOGOS (HOW IT WORKS) ── */
+  div[style*="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap"]{
+    gap:8px!important;
+  }
+
+  /* ── STICKY CTA — already handled, ensure proper spacing ── */
+  #sticky-cta{
+    padding:12px 16px!important;
+    gap:10px!important;
+  }
+  #sticky-cta a[href]{
+    padding:12px 18px!important;
+    font-size:13px!important;
+  }
+
+  /* ── WHATSAPP BUTTON — move up above sticky CTA ── */
+  a[href*="wa.me"]{
+    bottom:80px!important;
+    right:16px!important;
+    width:52px!important;
+    height:52px!important;
+  }
+
+  /* ── VIDEO IN PREVIEW SECTION ── */
+  video{
+    max-width:100%!important;
+    height:auto!important;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   MAX-WIDTH: 480px  — Small Phones (iPhone SE etc.)
+   ══════════════════════════════════════════════ */
+@media(max-width:480px){
+
+  nav{padding:12px 16px!important;}
+  .nav-logo svg{height:28px!important;}
+
+  .hero{padding:84px 16px 48px!important;}
+  .hero-badge{font-size:10px;padding:6px 14px;}
+  .hero-sub{font-size:15px;margin-bottom:24px;}
+  .hero-ctas{gap:10px;}
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-secondary,
+  .hero-ctas .nav-cta{
+    padding:14px 20px;font-size:14px;
+  }
+  .hero-stat-num{font-size:18px;}
+  .hero-stat-label{font-size:9px;}
+
+  .section-pad{padding:44px 16px!important;}
+  .preview-section{padding:44px 16px!important;}
+  .final-cta{padding:56px 16px!important;}
+
+  section[style*="padding:80px 60px"],
+  section[style*="padding: 80px 60px"],
+  section[style*="padding:100px 60px"],
+  section[style*="padding: 100px 60px"],
+  section[style*="padding:120px 60px"],
+  section[style*="padding: 120px 60px"],
+  section[style*="padding:160px 60px"],
+  section[style*="padding: 160px 60px"]{
+    padding:44px 16px!important;
+  }
+
+  .section-title{font-size:clamp(24px,8vw,40px)!important;}
+
+  .trust-bar{padding:14px 12px!important;gap:10px 12px!important;}
+  .trust-item{font-size:11px;}
+
+  .bento-big-num{font-size:48px;}
+  .bento-card{padding:20px 16px;}
+
+  .devices-grid{grid-template-columns:1fr!important;}
+
+  .pricing-price{font-size:clamp(44px,14vw,64px);}
+  .pricing-header{padding:24px 16px;}
+  .pricing-body{padding:20px 16px;}
+
+  .cat-card{padding:24px 16px;}
+
+  .testi-card{padding:20px 16px;}
+  .testi-text{font-size:15px;}
+
+  footer{padding:32px 16px!important;}
+  .footer-links a{font-size:12px;}
+
+  /* Scarcity bar */
+  .scarcity-bar{padding:14px 12px!important;}
+  .countdown-num{font-size:16px;}
+  .countdown-unit{min-width:40px;padding:4px 8px;}
+
+  /* Pay trust row goes 1 col on tiny screens */
+  .pay-trust-row{grid-template-columns:1fr!important;}
+
+  /* Sticky CTA smaller */
+  #sticky-cta{padding:10px 14px!important;}
+
+  /* WhatsApp */
+  a[href*="wa.me"]{
+    width:48px!important;height:48px!important;
+    bottom:76px!important;right:12px!important;
+  }
+  a[href*="wa.me"] svg{width:26px;height:26px;}
+}
+
+/* ══════════════════════════════════════════════
+   481px–768px  — Tablets Portrait
+   ══════════════════════════════════════════════ */
+@media(min-width:481px) and (max-width:768px){
+  nav{padding:16px 24px!important;}
+
+  .section-pad{padding:72px 24px!important;}
+  .preview-section{padding:72px 24px!important;}
+  .final-cta{padding:80px 24px!important;}
+
+  section[style*="padding:80px 60px"],section[style*="padding: 80px 60px"],
+  section[style*="padding:100px 60px"],section[style*="padding: 100px 60px"],
+  section[style*="padding:120px 60px"],section[style*="padding: 120px 60px"],
+  section[style*="padding:160px 60px"],section[style*="padding: 160px 60px"]{
+    padding:72px 24px!important;
+  }
+
+  footer{padding:40px 24px!important;}
+  .devices-grid{grid-template-columns:repeat(2,1fr)!important;}
+}
+
+/* ══════════════════════════════════════════════
+   769px–900px  — Large Tablets / Small Laptops
+   ══════════════════════════════════════════════ */
+@media(min-width:769px) and (max-width:900px){
+  .section-pad{padding:80px 32px!important;}
+  .preview-section{padding:80px 32px!important;}
+
+  section[style*="padding:80px 60px"],section[style*="padding: 80px 60px"],
+  section[style*="padding:100px 60px"],section[style*="padding: 100px 60px"],
+  section[style*="padding:120px 60px"],section[style*="padding: 120px 60px"],
+  section[style*="padding:160px 60px"],section[style*="padding: 160px 60px"]{
+    padding:80px 32px!important;
+  }
+  footer{padding:48px 32px!important;}
+}
+
+</style>
+
+<!-- Mobile Nav JS -->
+<script>
+(function(){
+  var ham = document.getElementById('hamburger');
+  var nav = document.getElementById('mobileNav');
+  var closeBtn = document.getElementById('mobileNavClose');
+
+  function openMobileNav(){
+    nav.classList.add('open');
+    ham.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  window.closeMobileNav = function(){
+    nav.classList.remove('open');
+    ham.classList.remove('open');
+    document.body.style.overflow='';
+  };
+
+  if(ham) ham.addEventListener('click', openMobileNav);
+  if(closeBtn) closeBtn.addEventListener('click', closeMobileNav);
+  if(nav) nav.addEventListener('click', function(e){
+    if(e.target === nav) closeMobileNav();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') closeMobileNav();
+  });
+})();
 </script>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"7f7b0fd8732c4326aae4b9d58d5c514a","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
