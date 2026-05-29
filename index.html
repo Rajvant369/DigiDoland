@@ -941,154 +941,295 @@ footer{
 
 /* ===== END DUAL PAYMENT ===== */
 
-/* RESPONSIVE */
+/* =============================================
+   COMPLETE MOBILE OPTIMIZATION
+   ============================================= */
+
+/* Hide desktop cursor on touch devices */
+@media(hover:none){
+  .cursor,.cursor-ring{display:none!important;}
+}
+
+/* Disable hover animations on mobile for performance */
 @media(max-width:900px){
-  nav{padding:16px 24px;}
+  .cat-card:hover,.bento-card:hover,.testi-card:hover,
+  .preview-card:hover,.device-card:hover{
+    transform:none!important;
+  }
+  .btn-primary:hover,.btn-secondary:hover,.btn-buy:hover{
+    transform:none!important;
+  }
+}
+
+/* ---- NAV ---- */
+@media(max-width:900px){
+  nav{padding:14px 20px;}
   .nav-links{display:none;}
-  .hero{padding:100px 24px 60px;flex-direction:column;}
-  .hero-visual{position:relative;right:auto;top:auto;transform:none;width:100%;margin-top:40px;}
-  .section-pad{padding:80px 24px;}
-  .trust-bar{padding:20px 24px;gap:20px;}
-  .categories-grid{grid-template-columns:1fr;}
-  .bento-grid{grid-template-columns:1fr;}
-  .bento-1,.bento-2,.bento-3,.bento-4,.bento-5,.bento-6{grid-column:span 1;grid-row:span 1;}
-  .before-after{grid-template-columns:1fr;gap:20px;}
-  .ba-divider{flex-direction:row;padding:0;}
-  .comparison-table{font-size:12px;}
-  .comparison-table td,.comparison-table th{padding:12px 16px;}
-  .scarcity-bar{padding:16px 24px;}
-  .final-cta{padding:100px 24px;}
-  footer{padding:40px 24px;flex-direction:column;text-align:center;}
-  /* Dual payment buttons stack on mobile */
-  .checkout-btns{grid-template-columns:1fr;}
-  .pay-trust-row{grid-template-columns:1fr 1fr;}
-  .pay-btn{padding:16px 12px;}
-  .pay-btn-main{font-size:14px;}
-}
-@media(max-width:480px){
-  .pay-trust-row{grid-template-columns:1fr;}
-}
-</style>
-<style>
-/* ===== VIDEO & HERO MOBILE FIXES ===== */
-
-/* Hero video wrapper - desktop default */
-.hero-video-wrap {
-  position: absolute !important;
-  right: 120px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 25% !important;
-  max-width: 300px !important;
-  z-index: 2 !important;
+  .nav-cta{padding:10px 20px;font-size:12px;}
 }
 
-/* Video responsive container */
-.hero-video-wrap video {
-  width: 100% !important;
-  height: auto !important;
-  display: block !important;
-  max-height: none !important;
-  border-radius: 20px;
-}
-
+/* ---- HERO ---- */
 @media(max-width:900px){
-  /* Hero layout fix for mobile */
-  .hero {
-    flex-direction: column !important;
-    min-height: auto !important;
-    padding: 100px 20px 60px !important;
+  .hero{
+    padding:90px 20px 50px!important;
+    flex-direction:column!important;
+    min-height:auto!important;
+    align-items:flex-start;
   }
-  
-  /* Hero content - full width on mobile */
-  .hero-content {
-    max-width: 100% !important;
-    width: 100% !important;
-    text-align: left;
+  .hero-content{
+    max-width:100%!important;
+    width:100%;
+    z-index:3;
   }
-  
-  /* Video section - below hero content on mobile */
-  .hero-video-wrap {
-    position: relative !important;
-    right: auto !important;
-    top: auto !important;
-    transform: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-top: 32px !important;
-    border-radius: 16px;
-    overflow: hidden;
+  .hero-title{
+    font-size:clamp(38px,11vw,64px)!important;
+    line-height:1.05!important;
   }
-  
-  .hero-video-wrap video {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 280px !important;
-    object-fit: cover !important;
-    border-radius: 16px;
+  .hero-sub{
+    font-size:16px!important;
+    margin-bottom:32px!important;
   }
-  
-  /* Hero title responsive */
-  .hero-title {
-    font-size: clamp(36px, 10vw, 60px) !important;
+  .hero-badge{
+    font-size:11px;
+    padding:7px 16px;
+    margin-bottom:24px;
   }
-  
-  /* Stats row - wrap on small screens */
-  .hero-stats {
-    gap: 20px !important;
+  .hero-ctas{
+    flex-direction:column!important;
+    gap:12px!important;
+    margin-bottom:32px!important;
   }
-  
-  .hero-stat-num {
-    font-size: 28px !important;
+  .hero-ctas a{
+    text-align:center!important;
+    justify-content:center!important;
+    width:100%!important;
   }
-  
-  /* Glow orbs - hide on mobile for performance */
-  .glow-orb {
-    display: none;
+  .btn-primary,.btn-secondary{
+    padding:16px 28px!important;
+    font-size:14px!important;
   }
-  
-  /* Trust bar */
-  .trust-bar {
-    gap: 16px !important;
-    padding: 16px !important;
+  .hero-stats{
+    gap:16px!important;
+    flex-wrap:wrap;
   }
-  
-  .trust-item {
-    font-size: 12px !important;
+  .hero-stat-num{font-size:26px!important;}
+  .hero-stat{padding-left:14px!important;}
+
+  /* Video — full width below hero content */
+  .hero-visual,.hero-video-wrap{
+    position:relative!important;
+    right:auto!important;top:auto!important;
+    transform:none!important;
+    width:100%!important;max-width:100%!important;
+    margin-top:28px!important;
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .hero-video-wrap video,
+  .hero-visual video{
+    width:100%!important;
+    height:auto!important;
+    max-height:260px!important;
+    object-fit:cover!important;
+    display:block!important;
+    border-radius:16px;
+  }
+
+  /* Hide decorative glow orbs on mobile */
+  .glow-orb,.hero-grid-lines,.particles{display:none!important;}
+}
+
+/* ---- TRUST BAR ---- */
+@media(max-width:900px){
+  .trust-bar{
+    padding:16px 20px!important;
+    gap:14px!important;
+    justify-content:flex-start;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    -webkit-overflow-scrolling:touch;
+  }
+  .trust-item{font-size:12px!important;flex-shrink:0;}
+}
+
+/* ---- SECTION PADDING ---- */
+@media(max-width:900px){
+  .section-pad{padding:60px 20px!important;}
+  .preview-section{padding:60px 20px!important;}
+  .section-title{font-size:clamp(28px,7vw,44px)!important;}
+  .section-sub{font-size:16px!important;}
+  .section-label{font-size:10px!important;}
+}
+
+/* ---- CATEGORIES GRID ---- */
+@media(max-width:900px){
+  .categories-grid{grid-template-columns:1fr!important;}
+  .cat-card{padding:28px 24px!important;}
+  .cat-num{font-size:44px!important;}
+}
+
+/* ---- BENTO GRID ---- */
+@media(max-width:900px){
+  .bento-grid{grid-template-columns:1fr!important;}
+  .bento-1,.bento-2,.bento-3,.bento-4,.bento-5,.bento-6{
+    grid-column:span 1!important;
+    grid-row:span 1!important;
+  }
+  .bento-big-num{font-size:56px!important;}
+  .bento-card{padding:28px!important;}
+}
+
+/* ---- BEFORE/AFTER ---- */
+@media(max-width:900px){
+  .before-after{
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+  }
+  .ba-side{padding:28px 24px!important;}
+  .ba-divider{
+    flex-direction:row!important;
+    padding:8px 0!important;
+    justify-content:center;
+  }
+  .ba-arrow{font-size:28px!important;transform:rotate(90deg)!important;}
+}
+
+/* ---- PREVIEW TABS ---- */
+@media(max-width:900px){
+  .preview-tabs{
+    gap:6px!important;
+    overflow-x:auto;
+    flex-wrap:nowrap!important;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:6px;
+  }
+  .ptab{
+    white-space:nowrap;
+    flex-shrink:0;
+    padding:8px 16px!important;
+    font-size:12px!important;
+  }
+  .preview-grid{
+    grid-template-columns:1fr!important;
+    gap:16px!important;
   }
 }
 
+/* ---- TESTIMONIALS ---- */
+@media(max-width:900px){
+  .testimonials-grid{
+    grid-template-columns:1fr!important;
+    gap:14px!important;
+  }
+  .testi-card{padding:24px!important;}
+}
+
+/* ---- COMPARISON TABLE ---- */
+@media(max-width:900px){
+  .comparison-section{overflow-x:auto;}
+  .comparison-table{
+    font-size:12px!important;
+    min-width:480px;
+  }
+  .comparison-table td,
+  .comparison-table th{padding:10px 14px!important;}
+}
+
+/* ---- DEVICES GRID ---- */
+@media(max-width:900px){
+  .devices-grid{
+    grid-template-columns:repeat(2,1fr)!important;
+    gap:12px!important;
+  }
+  .device-card{padding:24px 16px!important;}
+  .device-icon{font-size:36px!important;}
+}
+
+/* ---- SCARCITY BAR ---- */
+@media(max-width:900px){
+  .scarcity-bar{
+    padding:14px 20px!important;
+    gap:12px!important;
+    text-align:center;
+  }
+  .countdown{justify-content:center;}
+}
+
+/* ---- PRICING CARD ---- */
+@media(max-width:900px){
+  .pricing-card{max-width:100%!important;margin:40px 0 0!important;}
+  .pricing-header{padding:28px 24px!important;}
+  .pricing-price{font-size:56px!important;}
+  .pricing-body{padding:28px 24px!important;}
+  .btn-buy{font-size:16px!important;padding:18px!important;}
+  /* Payment buttons */
+  .checkout-btns{grid-template-columns:1fr!important;}
+  .pay-trust-row{grid-template-columns:1fr 1fr!important;}
+  .pay-btn{padding:16px 12px!important;}
+  .pay-btn-main{font-size:14px!important;}
+}
+
+/* ---- FINAL CTA ---- */
+@media(max-width:900px){
+  .final-cta{padding:80px 20px!important;}
+  .final-cta-title{font-size:clamp(32px,8vw,56px)!important;}
+}
+
+/* ---- FOOTER ---- */
+@media(max-width:900px){
+  footer{
+    padding:32px 20px!important;
+    flex-direction:column!important;
+    text-align:center!important;
+    gap:16px!important;
+  }
+  .footer-links{justify-content:center;flex-wrap:wrap;gap:16px!important;}
+}
+
+/* ---- STICKY CTA & WHATSAPP ---- */
+@media(max-width:900px){
+  /* WhatsApp button — move up when sticky CTA is visible */
+  .wa-btn-wrap{bottom:90px!important;}
+}
+
+/* ---- 480px SMALL PHONES ---- */
 @media(max-width:480px){
-  .hero {
-    padding: 90px 16px 40px !important;
-  }
-  
-  .hero-video-wrap video {
-    max-height: 220px !important;
-  }
-  
-  .hero-stats {
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    gap: 12px !important;
-  }
-  
-  .hero-stat {
-    padding-left: 12px !important;
-  }
-  
-  .hero-ctas {
-    flex-direction: column !important;
-    gap: 12px !important;
-  }
-  
-  .hero-ctas a {
-    text-align: center !important;
-    justify-content: center !important;
-  }
+  .hero{padding:80px 16px 40px!important;}
+  .hero-title{font-size:clamp(32px,10vw,44px)!important;}
+  .section-pad{padding:48px 16px!important;}
+  .preview-section{padding:48px 16px!important;}
+
+  .hero-video-wrap video,
+  .hero-visual video{max-height:220px!important;}
+
+  .hero-stats{gap:10px!important;}
+  .hero-stat-num{font-size:22px!important;}
+
+  .devices-grid{grid-template-columns:1fr!important;}
+  .pay-trust-row{grid-template-columns:1fr!important;}
+
+  .trust-bar{gap:10px!important;padding:14px 16px!important;}
+  nav{padding:12px 16px!important;}
+  .nav-cta{padding:9px 16px!important;font-size:11px!important;}
+
+  .ba-side{padding:20px 16px!important;}
+  .testi-card{padding:20px 16px!important;}
+  .cat-card{padding:22px 18px!important;}
+  .pricing-header{padding:22px 18px!important;}
+  .pricing-body{padding:22px 18px!important;}
+  footer{padding:24px 16px!important;}
 }
 
-/* ===== END VIDEO & HERO MOBILE FIXES ===== */
+/* ---- LEGAL MODALS ---- */
+@media(max-width:900px){
+  .legal-modal{
+    width:95vw!important;
+    max-height:85vh!important;
+    border-radius:16px!important;
+  }
+  .legal-modal-head{padding:16px 20px!important;}
+  .legal-modal-body{padding:16px 20px!important;}
+}
 </style>
 </head>
 <body>
@@ -3003,7 +3144,7 @@ document.addEventListener('keydown',function(e){
 
 <!-- WhatsApp Floating Button -->
 <a href="https://wa.me/917874185901?text=Hi%21+I+want+to+know+more+about+DIGIDOLAND+Planner+Bundle" target="_blank"
-   style="position:fixed;bottom:28px;right:28px;z-index:9990;
+   id="wa-btn" style="position:fixed;bottom:28px;right:28px;z-index:9990;
           width:60px;height:60px;border-radius:50%;
           background:linear-gradient(135deg,#25D366,#128C7E);
           display:flex;align-items:center;justify-content:center;
@@ -3048,11 +3189,16 @@ document.addEventListener('keydown',function(e){
 <script>
 // Sticky mobile CTA
 var stickyCta = document.getElementById('sticky-cta');
+var waBtn = document.getElementById('wa-btn');
 function checkSticky(){
   if(window.innerWidth <= 900){
-    stickyCta.style.display = window.scrollY > 600 ? 'flex' : 'none';
+    var show = window.scrollY > 600;
+    stickyCta.style.display = show ? 'flex' : 'none';
+    // Raise WhatsApp button above sticky CTA
+    if(waBtn) waBtn.style.bottom = show ? '88px' : '28px';
   } else {
     stickyCta.style.display = 'none';
+    if(waBtn) waBtn.style.bottom = '28px';
   }
 }
 window.addEventListener('scroll', checkSticky);
