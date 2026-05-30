@@ -2989,44 +2989,70 @@ function showPreview(id, btn){
 </style>
 
 <script>
-/* Robust mobile video autoplay */
+/* Strong mobile video autoplay */
 (function(){
   var v = document.querySelector('video');
   if(!v) return;
 
+  // Hard-set muted + inline (required for mobile autoplay)
   v.muted = true;
   v.defaultMuted = true;
+  v.volume = 0;
   v.setAttribute('muted','');
   v.setAttribute('playsinline','');
   v.setAttribute('webkit-playsinline','');
+  v.setAttribute('autoplay','');
 
+  var started = false;
   function play(){
+    if(started) return;
     var p = v.play();
-    if(p && typeof p.catch === 'function'){ p.catch(function(){}); }
+    if(p && typeof p.then === 'function'){
+      p.then(function(){ started = true; }).catch(function(){ /* retry later */ });
+    } else {
+      started = true;
+    }
   }
 
-  // Play on load
+  // Force the browser to load the video, then play
+  try { v.load(); } catch(e){}
+
+  // Play on every relevant media/load event
+  ['loadeddata','canplay','canplaythrough','loadedmetadata'].forEach(function(ev){
+    v.addEventListener(ev, play);
+  });
+
+  // Play on page load states
   if(document.readyState === 'complete'){ play(); }
-  else { window.addEventListener('load', play); }
+  window.addEventListener('load', play);
   document.addEventListener('DOMContentLoaded', play);
 
-  // Play when scrolled into view (best for mobile)
+  // Play when video scrolls into view (most reliable on mobile)
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(entries){
       entries.forEach(function(e){ if(e.isIntersecting){ play(); } });
-    }, {threshold:0.1}).observe(v);
+    }, {threshold: 0.01}).observe(v);
   }
 
-  // Play on first user interaction (final fallback)
-  function onTouch(){
+  // Final fallback: first user gesture
+  function onGesture(){
+    started = false;
     play();
-    ['touchstart','touchend','click','scroll'].forEach(function(ev){
-      document.removeEventListener(ev, onTouch);
+    ['touchstart','touchend','click','scroll','pointerdown'].forEach(function(ev){
+      document.removeEventListener(ev, onGesture);
     });
   }
-  ['touchstart','touchend','click','scroll'].forEach(function(ev){
-    document.addEventListener(ev, onTouch, {once:true, passive:true});
+  ['touchstart','touchend','click','scroll','pointerdown'].forEach(function(ev){
+    document.addEventListener(ev, onGesture, {once:true, passive:true});
   });
+
+  // Keep trying briefly after load (handles slow video loads on mobile)
+  var tries = 0;
+  var iv = setInterval(function(){
+    if(started || tries > 10){ clearInterval(iv); return; }
+    tries++;
+    play();
+  }, 500);
 })();
 </script>
 </body>
