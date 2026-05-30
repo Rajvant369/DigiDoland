@@ -941,32 +941,169 @@ footer{
 
 /* ===== END DUAL PAYMENT ===== */
 
-/* RESPONSIVE */
+/* ─── MOBILE RESPONSIVE ─── */
+
+/* === HERO LAYOUT === */
 @media(max-width:900px){
-  nav{padding:16px 24px;}
-  .nav-links{display:none;}
-  .hero{padding:100px 24px 60px;flex-direction:column;}
-  .hero-visual{position:relative;right:auto;top:auto;transform:none;width:100%;margin-top:40px;}
-  .section-pad{padding:80px 24px;}
-  .trust-bar{padding:20px 24px;gap:20px;}
-  .categories-grid{grid-template-columns:1fr;}
-  .bento-grid{grid-template-columns:1fr;}
-  .bento-1,.bento-2,.bento-3,.bento-4,.bento-5,.bento-6{grid-column:span 1;grid-row:span 1;}
-  .before-after{grid-template-columns:1fr;gap:20px;}
-  .ba-divider{flex-direction:row;padding:0;}
-  .comparison-table{font-size:12px;}
-  .comparison-table td,.comparison-table th{padding:12px 16px;}
-  .scarcity-bar{padding:16px 24px;}
-  .final-cta{padding:100px 24px;}
-  footer{padding:40px 24px;flex-direction:column;text-align:center;}
-  /* Dual payment buttons stack on mobile */
-  .checkout-btns{grid-template-columns:1fr;}
-  .pay-trust-row{grid-template-columns:1fr 1fr;}
-  .pay-btn{padding:16px 12px;}
-  .pay-btn-main{font-size:14px;}
+  /* Hero: stack vertically */
+  .hero{
+    padding:90px 20px 50px !important;
+    flex-direction:column !important;
+    min-height:auto !important;
+    position:relative;
+  }
+
+  /* Hero content: full width */
+  .hero-content{
+    max-width:100% !important;
+    width:100% !important;
+    position:relative;
+    z-index:3;
+  }
+
+  /* Hero title */
+  .hero-title{
+    font-size:clamp(36px,10vw,60px) !important;
+    line-height:1.05 !important;
+  }
+
+  /* Hero sub text */
+  .hero-sub{
+    font-size:16px !important;
+  }
+
+  /* CTA buttons: stack */
+  .hero-ctas{
+    flex-direction:column !important;
+    gap:12px !important;
+  }
+  .hero-ctas a{
+    text-align:center !important;
+    justify-content:center !important;
+    width:100% !important;
+  }
+
+  /* Stats row */
+  .hero-stats{gap:16px !important;}
+  .hero-stat-num{font-size:26px !important;}
+
+  /* ── VIDEO: override ALL inline styles ── */
+  .hero-visual{
+    position:relative !important;
+    right:auto !important;
+    top:auto !important;
+    transform:none !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:28px 0 0 !important;
+    border-radius:16px;
+    overflow:hidden;
+    z-index:1;
+  }
+  .hero-visual > div{
+    border-radius:16px !important;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5) !important;
+  }
+  .hero-visual video{
+    width:100% !important;
+    height:260px !important;
+    max-height:260px !important;
+    min-height:unset !important;
+    object-fit:cover !important;
+    display:block !important;
+    border-radius:16px !important;
+  }
+
+  /* Hide decorative elements for performance */
+  .glow-orb,.hero-grid-lines,.particles{display:none !important;}
+
+  /* Nav */
+  nav{padding:14px 20px !important;}
+  .nav-links{display:none !important;}
+  .nav-cta{padding:10px 20px;font-size:12px;}
+
+  /* Trust bar: horizontal scroll */
+  .trust-bar{
+    padding:14px 20px !important;
+    gap:12px !important;
+    flex-wrap:nowrap !important;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    justify-content:flex-start !important;
+  }
+  .trust-item{font-size:12px !important;flex-shrink:0;}
+
+  /* Section padding */
+  .section-pad{padding:60px 20px !important;}
+  .preview-section{padding:60px 20px !important;}
+  .section-title{font-size:clamp(28px,7vw,44px) !important;}
+
+  /* Grids → 1 column */
+  .categories-grid{grid-template-columns:1fr !important;}
+  .bento-grid{grid-template-columns:1fr !important;}
+  .bento-1,.bento-2,.bento-3,.bento-4,.bento-5,.bento-6{grid-column:span 1 !important;grid-row:span 1 !important;}
+  .testimonials-grid{grid-template-columns:1fr !important;gap:14px !important;}
+
+  /* Before/After */
+  .before-after{grid-template-columns:1fr !important;gap:16px !important;}
+  .ba-divider{flex-direction:row !important;padding:8px 0 !important;justify-content:center;}
+  .ba-arrow{font-size:28px !important;transform:rotate(90deg) !important;}
+
+  /* Preview tabs: horizontal scroll */
+  .preview-tabs{
+    gap:6px !important;
+    overflow-x:auto;
+    flex-wrap:nowrap !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .ptab{white-space:nowrap;flex-shrink:0;font-size:12px !important;}
+  .preview-grid{grid-template-columns:1fr !important;}
+
+  /* Comparison table: scroll */
+  .comparison-section{overflow-x:auto !important;}
+  .comparison-table{font-size:12px !important;min-width:480px;}
+  .comparison-table td,.comparison-table th{padding:10px 14px !important;}
+
+  /* Devices */
+  .devices-grid{grid-template-columns:repeat(2,1fr) !important;gap:12px !important;}
+
+  /* Scarcity bar */
+  .scarcity-bar{padding:14px 20px !important;text-align:center;}
+
+  /* Pricing */
+  .pricing-card{max-width:100% !important;margin:40px 0 0 !important;}
+  .pricing-header{padding:28px 24px !important;}
+  .pricing-price{font-size:56px !important;}
+  .pricing-body{padding:28px 24px !important;}
+  .btn-buy{font-size:16px !important;padding:18px !important;}
+
+  /* Payment buttons */
+  .checkout-btns{grid-template-columns:1fr !important;}
+  .pay-trust-row{grid-template-columns:1fr 1fr !important;}
+  .pay-btn{padding:16px 12px !important;}
+  .pay-btn-main{font-size:14px !important;}
+
+  /* Final CTA */
+  .final-cta{padding:80px 20px !important;}
+
+  /* Footer */
+  footer{padding:32px 20px !important;flex-direction:column !important;text-align:center !important;gap:16px !important;}
+  .footer-links{justify-content:center;flex-wrap:wrap;}
 }
+
+/* === 480px small phones === */
 @media(max-width:480px){
-  .pay-trust-row{grid-template-columns:1fr;}
+  .hero{padding:80px 16px 40px !important;}
+  .hero-title{font-size:clamp(30px,10vw,40px) !important;}
+  .hero-visual video{height:200px !important;max-height:200px !important;}
+  .section-pad{padding:48px 16px !important;}
+  .devices-grid{grid-template-columns:1fr !important;}
+  .pay-trust-row{grid-template-columns:1fr !important;}
+  .trust-bar{padding:12px 16px !important;}
+  nav{padding:12px 16px !important;}
+  .hero-stat-num{font-size:22px !important;}
+  .hero-stats{gap:10px !important;}
+  .hero-ctas{gap:10px !important;}
 }
 </style>
 </head>
@@ -2882,7 +3019,7 @@ document.addEventListener('keydown',function(e){
 
 <!-- WhatsApp Floating Button -->
 <a href="https://wa.me/917874185901?text=Hi%21+I+want+to+know+more+about+DIGIDOLAND+Planner+Bundle" target="_blank"
-   style="position:fixed;bottom:28px;right:28px;z-index:9990;
+   id="wa-btn" style="position:fixed;bottom:28px;right:28px;z-index:9990;
           width:60px;height:60px;border-radius:50%;
           background:linear-gradient(135deg,#25D366,#128C7E);
           display:flex;align-items:center;justify-content:center;
@@ -2925,37 +3062,35 @@ document.addEventListener('keydown',function(e){
 </style>
 
 <script>
-// Force autoplay for all videos (browser policy workaround)
+
+// Force video autoplay — browser policy workaround
 document.addEventListener('DOMContentLoaded', function(){
-  var videos = document.querySelectorAll('video[autoplay]');
-  videos.forEach(function(v){
+  document.querySelectorAll('video[autoplay]').forEach(function(v){
     v.muted = true;
-    v.playsInline = true;
-    var playPromise = v.play();
-    if(playPromise !== undefined){
-      playPromise.catch(function(){
-        // Autoplay blocked — try on first user interaction
-        var tryPlay = function(){
-          v.play().catch(function(){});
-          document.removeEventListener('click', tryPlay);
-          document.removeEventListener('touchstart', tryPlay);
-          document.removeEventListener('scroll', tryPlay);
-        };
-        document.addEventListener('click', tryPlay, {once:true});
-        document.addEventListener('touchstart', tryPlay, {once:true});
-        document.addEventListener('scroll', tryPlay, {once:true, passive:true});
+    v.setAttribute('playsinline','');
+    var p = v.play();
+    if(p !== undefined){
+      p.catch(function(){
+        // autoplay blocked — play on first user interaction
+        var fn = function(){ v.play().catch(function(){}); };
+        ['click','touchstart','scroll'].forEach(function(e){
+          document.addEventListener(e, fn, {once:true, passive:true});
+        });
       });
     }
   });
 });
-
 // Sticky mobile CTA
 var stickyCta = document.getElementById('sticky-cta');
+var waBtn = document.getElementById('wa-btn');
 function checkSticky(){
   if(window.innerWidth <= 900){
-    stickyCta.style.display = window.scrollY > 600 ? 'flex' : 'none';
+    var show = window.scrollY > 600;
+    stickyCta.style.display = show ? 'flex' : 'none';
+    if(waBtn) waBtn.style.bottom = show ? '86px' : '28px';
   } else {
     stickyCta.style.display = 'none';
+    if(waBtn) waBtn.style.bottom = '28px';
   }
 }
 window.addEventListener('scroll', checkSticky);
