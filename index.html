@@ -960,6 +960,8 @@ footer{
   .scarcity-bar{padding:16px 24px;}
   .final-cta{padding:100px 24px;}
   footer{padding:40px 24px;flex-direction:column;text-align:center;}
+  .footer-grid{grid-template-columns:1fr !important;gap:28px !important;}
+  footer > div[style*="max-width:1100px"]:first-of-type{flex-direction:column;}
   /* Dual payment buttons stack on mobile */
   .checkout-btns{grid-template-columns:1fr;}
   .pay-trust-row{grid-template-columns:1fr 1fr;}
@@ -2397,7 +2399,7 @@ footer{
 
 <!-- FOOTER -->
 <footer style="background:#0A0A0A;border-top:1px solid rgba(212,175,55,0.12);padding:64px 60px 40px;display:block;">
-  <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:48px;max-width:1100px;margin:0 auto 48px;">
+  <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:48px;max-width:1100px;margin:0 auto 48px;" class="footer-grid">
 
     <!-- Left: Brand -->
     <div>
@@ -3147,7 +3149,7 @@ img,video,svg{max-width:100%;height:auto;}
   /* Final CTA + footer */
   .final-cta-title{font-size:clamp(34px,9vw,56px);}
   .final-cta-sub{font-size:16px;}
-  footer{gap:16px;}
+  footer{gap:16px;padding:32px 20px;}
   .footer-links{justify-content:center;flex-wrap:wrap;}
 
   /* Reserve room so the sticky bottom CTA never hides content */
