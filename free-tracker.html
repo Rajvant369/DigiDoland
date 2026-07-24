@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free 2026 Budget + Side Hustle Tracker — No App, No iPad | DIGIDOLAND®</title>
+<meta name="description" content="A free 2026 budget tracker that opens in your browser. Income, bills, savings goals, debt payoff and side hustle income on one page. No app, no iPad, nothing to install.">
+<link rel="canonical" href="https://digidoland.com/free-tracker.html">
+<meta property="og:title" content="Free 2026 Budget + Side Hustle Tracker">
+<meta property="og:description" content="Income, bills, savings goals and debt payoff on one page. Opens in your browser — no app, no iPad, nothing to install.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://digidoland.com/free-tracker.html">
+<meta property="og:site_name" content="DigiDoland">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF6EC;
+  --paper:#FFFFFF;
+  --ink:#2A2520;
+  --ink-soft:#6B6259;
+  --terracotta:#C0603C;
+  --terracotta-dk:#A54F2F;
+  --sage:#6F8265;
+  --gold:#B08C2A;
+  --blush:#F0DCD2;
+  --line:#E7DCCB;
+  --wrap:1080px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
+
+/* ---------- masthead ---------- */
+.masthead{padding:26px 0 8px}
+.brand{
+  display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;color:var(--ink);
+}
+.brand-mark{
+  width:30px;height:30px;border:1.5px solid var(--gold);border-radius:50%;
+  display:grid;place-items:center;
+  font-family:'Playfair Display',serif;font-size:14px;color:var(--gold);
+}
+.brand-name{font-size:14px;font-weight:700;letter-spacing:.16em}
+
+/* ---------- hero ---------- */
+.hero{padding:34px 0 60px}
+.hero-grid{display:grid;gap:42px}
+.eyebrow{
+  display:inline-block;
+  font-size:11.5px;font-weight:700;letter-spacing:.18em;
+  color:var(--terracotta);
+  border:1px solid var(--blush);border-radius:100px;
+  padding:7px 15px;margin-bottom:22px;background:var(--paper);
+}
+h1{font-size:clamp(2.35rem,7vw,3.6rem)}
+h1 em{font-style:normal;color:var(--terracotta)}
+.lede{font-size:clamp(1.02rem,2.4vw,1.16rem);color:var(--ink-soft);margin-top:20px;max-width:30em}
+.reassure{
+  display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:24px;
+  font-size:14px;color:var(--ink-soft);
+}
+.reassure span{display:flex;align-items:center;gap:7px}
+.tick{width:15px;height:15px;flex:none}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-block;text-align:center;text-decoration:none;
+  font-family:'DM Sans',sans-serif;font-weight:700;
+  font-size:16px;letter-spacing:.02em;
+  padding:17px 34px;border-radius:4px;
+  transition:transform .16s ease,background .16s ease;
+}
+.btn-main{background:var(--terracotta);color:#fff;box-shadow:0 1px 0 var(--terracotta-dk)}
+.btn-main:hover{background:var(--terracotta-dk);transform:translateY(-1px)}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--cream)}
+.btn-row{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn-note{font-size:13.5px;color:var(--ink-soft)}
+a:focus-visible,button:focus-visible,input:focus-visible{
+  outline:2.5px solid var(--gold);outline-offset:3px;
+}
+
+/* ---------- live tracker (signature) ---------- */
+.demo{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:26px 24px 24px;
+  box-shadow:0 18px 40px -28px rgba(42,37,32,.5);
+}
+.demo-head{display:flex;justify-content:space-between;align-items:baseline;
+  border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:6px}
+.demo-title{font-family:'Playfair Display',serif;font-size:20px}
+.demo-tag{font-size:10.5px;font-weight:700;letter-spacing:.15em;color:var(--gold)}
+.row{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:14px;padding:11px 0;border-bottom:1px solid var(--line);
+}
+.row:last-of-type{border-bottom:0}
+.row label{font-size:15px;color:var(--ink-soft)}
+.money{display:flex;align-items:center;gap:2px}
+.money span{font-family:'DM Mono',monospace;font-size:15px;color:var(--ink-soft)}
+.money input{
+  width:96px;border:0;border-bottom:1.5px solid var(--line);
+  background:transparent;text-align:right;
+  font-family:'DM Mono',monospace;font-size:15.5px;color:var(--ink);
+  padding:3px 2px;
+}
+.money input:hover{border-bottom-color:var(--gold)}
+.row.income label{color:var(--ink);font-weight:500}
+.result{
+  margin-top:16px;padding:16px 18px;border-radius:5px;background:var(--cream);
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+.result-label{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--ink-soft)}
+.result-num{font-family:'DM Mono',monospace;font-size:27px;font-weight:500;color:var(--sage)}
+.result-num.over{color:var(--terracotta)}
+.demo-foot{margin-top:14px;font-size:13px;color:var(--ink-soft);line-height:1.5}
+
+/* ---------- sections ---------- */
+section{padding:62px 0}
+.section-head{max-width:34em;margin-bottom:34px}
+h2{font-size:clamp(1.7rem,4.4vw,2.3rem)}
+.section-head p{color:var(--ink-soft);margin-top:14px}
+.rule{width:54px;height:2px;background:var(--gold);margin-bottom:22px}
+
+.pages{display:grid;gap:14px}
+.page-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:5px;
+  padding:22px 22px 20px;
+}
+.page-card h3{font-size:18px;margin-bottom:7px}
+.page-card p{font-size:14.5px;color:var(--ink-soft);line-height:1.55}
+.page-num{
+  font-family:'DM Mono',monospace;font-size:12px;color:var(--gold);
+  display:block;margin-bottom:9px;letter-spacing:.08em;
+}
+
+/* ---------- get block ---------- */
+.get{background:var(--ink);color:var(--cream);border-radius:6px;padding:52px 32px;text-align:center}
+.get h2{color:var(--cream)}
+.get p{color:#C9BEB0;max-width:30em;margin:16px auto 0;font-size:15.5px}
+.get .btn-main{margin-top:30px}
+.get-note{font-size:13px;color:#9C9186;margin-top:16px}
+
+/* ---------- upsell ---------- */
+.upsell{
+  background:var(--paper);border:1px solid var(--line);border-radius:6px;
+  padding:34px 30px;display:grid;gap:22px;
+}
+.upsell .kicker{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--gold);margin-bottom:12px}
+.upsell h2{font-size:clamp(1.5rem,3.6vw,1.95rem)}
+.upsell p{color:var(--ink-soft);font-size:15.5px;margin-top:12px}
+.upsell ul{list-style:none;margin-top:18px;display:grid;gap:9px}
+.upsell li{font-size:15px;display:flex;gap:10px;align-items:flex-start}
+.upsell li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:9px;flex:none}
+.price{font-family:'Playfair Display',serif;font-size:2.5rem;line-height:1}
+.price small{font-size:.95rem;font-family:'DM Sans',sans-serif;color:var(--ink-soft);display:block;margin-top:8px;font-weight:400}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:34px 0 46px;font-size:13.5px;color:var(--ink-soft)}
+footer a{color:var(--ink-soft)}
+
+@media(min-width:820px){
+  body{font-size:17.5px}
+  .hero-grid{grid-template-columns:1.02fr .98fr;align-items:center;gap:56px}
+  .pages{grid-template-columns:repeat(3,1fr);gap:18px}
+  .upsell{grid-template-columns:1.6fr 1fr;align-items:center;padding:44px 42px}
+  section{padding:78px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap masthead">
+  <a class="brand" href="https://digidoland.com">
+    <span class="brand-mark">D</span>
+    <span class="brand-name">DIGIDOLAND</span>
+  </a>
+</div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">FREE DOWNLOAD</span>
+      <h1>The 2026 budget tracker that opens in <em>your browser</em>.</h1>
+      <p class="lede">Income, bills, savings goals, debt payoff and side hustle income — all on one page. Type in it, close it, come back tomorrow. Everything's still there.</p>
+      <div class="reassure">
+        <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#B08C2A" stroke-width="1.3"/><path d="M4.8 8.2l2.1 2.1 4.3-4.4" stroke="#B08C2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>No app to install</span>
+        <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#B08C2A" stroke-width="1.3"/><path d="M4.8 8.2l2.1 2.1 4.3-4.4" stroke="#B08C2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>No iPad or stylus</span>
+        <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#B08C2A" stroke-width="1.3"/><path d="M4.8 8.2l2.1 2.1 4.3-4.4" stroke="#B08C2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Works on any phone</span>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-main" href="https://rajvant.gumroad.com/l/xgpjlo?wanted=true">Get the free tracker</a>
+        <span class="btn-note">Free. Nothing to pay, now or later.</span>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-head">
+        <span class="demo-title">Monthly budget</span>
+        <span class="demo-tag">TRY IT HERE</span>
+      </div>
+
+      <div class="row income">
+        <label for="f-income">Money in this month</label>
+        <span class="money"><span>$</span><input id="f-income" type="number" inputmode="decimal" value="3200" min="0" step="10"></span>
+      </div>
+      <div class="row">
+        <label for="f-rent">Rent &amp; bills</label>
+        <span class="money"><span>$</span><input id="f-rent" type="number" inputmode="decimal" value="1450" min="0" step="10"></span>
+      </div>
+      <div class="row">
+        <label for="f-food">Groceries</label>
+        <span class="money"><span>$</span><input id="f-food" type="number" inputmode="decimal" value="520" min="0" step="10"></span>
+      </div>
+      <div class="row">
+        <label for="f-travel">Transport</label>
+        <span class="money"><span>$</span><input id="f-travel" type="number" inputmode="decimal" value="180" min="0" step="10"></span>
+      </div>
+      <div class="row">
+        <label for="f-save">Savings</label>
+        <span class="money"><span>$</span><input id="f-save" type="number" inputmode="decimal" value="400" min="0" step="10"></span>
+      </div>
+
+      <div class="result">
+        <span class="result-label">LEFT TO ASSIGN</span>
+        <span class="result-num" id="left" aria-live="polite">$650</span>
+      </div>
+      <p class="demo-foot">That's one page of it. The full tracker adds side hustle income, debt payoff and a savings goal you can actually watch move.</p>
+    </div>
+  </div>
+</header>
+
+<section class="wrap">
+  <div class="section-head">
+    <div class="rule"></div>
+    <h2>What you get</h2>
+    <p>Five pages. One file. It opens in Chrome, Safari, or whatever browser is already on your phone.</p>
+  </div>
+  <div class="pages">
+    <div class="page-card">
+      <span class="page-num">PAGE 01</span>
+      <h3>Monthly budget</h3>
+      <p>Money in, money out, and what's left — calculated as you type. The page you'll open most.</p>
+    </div>
+    <div class="page-card">
+      <span class="page-num">PAGE 02</span>
+      <h3>Bill tracker</h3>
+      <p>Every recurring bill with its due date, ticked off as it's paid. No more late-fee surprises.</p>
+    </div>
+    <div class="page-card">
+      <span class="page-num">PAGE 03</span>
+      <h3>Side hustle income</h3>
+      <p>Freelance, Etsy, content, tutoring — logged separately from your salary so you know what it really earns.</p>
+    </div>
+    <div class="page-card">
+      <span class="page-num">PAGE 04</span>
+      <h3>Savings goals</h3>
+      <p>Name the goal, set the number, watch the bar fill. Emergency fund, holiday, whatever you're building.</p>
+    </div>
+    <div class="page-card">
+      <span class="page-num">PAGE 05</span>
+      <h3>Debt payoff</h3>
+      <p>Every balance in one list with what you've cleared so far. The number going down is the point.</p>
+    </div>
+    <div class="page-card">
+      <span class="page-num">ALSO</span>
+      <h3>Auto-saves as you type</h3>
+      <p>Close the tab and come back next week — your numbers are still sitting there. Works offline too.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="get">
+    <h2>Take the tracker</h2>
+    <p>It's genuinely free. Grab it, use it for a month, and see whether tracking on one page works better than trying to hold it all in your head.</p>
+    <a class="btn btn-main" href="https://rajvant.gumroad.com/l/xgpjlo?wanted=true">Get the free tracker</a>
+    <p class="get-note">Delivered instantly through Gumroad · Works on phone, tablet and desktop</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="upsell">
+    <div>
+      <div class="kicker">IF YOU WANT THE WHOLE SYSTEM</div>
+      <h2>Budget &amp; Side Hustle Planner 2026</h2>
+      <p>The free tracker handles money. The full planner handles the rest of the year — 34 interactive pages covering daily and weekly planning, goals, habits, health and finances, in one file that works the same way.</p>
+      <ul>
+        <li>34 pages, 2,500+ editable fields</li>
+        <li>Interactive PDF and browser version, both included</li>
+        <li>The 2027 edition free when it releases</li>
+        <li>7-day refund, no questions asked</li>
+      </ul>
+    </div>
+    <div>
+      <div class="price">$9.99<small>One-time. No subscription.</small></div>
+      <div class="btn-row">
+        <a class="btn btn-ghost" href="https://rajvant.gumroad.com/l/ceborn?wanted=true">See the full planner</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 DIGIDOLAND · <a href="https://digidoland.com">digidoland.com</a> · Creative Fabrica ID: 19
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ids = ['f-income','f-rent','f-food','f-travel','f-save'];
+  var out = document.getElementById('left');
+
+  function num(id){
+    var v = parseFloat(document.getElementById(id).value);
+    return isNaN(v) ? 0 : v;
+  }
+
+  function money(n){
+    return '$' + Math.abs(n).toLocaleString('en-US', {maximumFractionDigits:0});
+  }
+
+  function calc(){
+    var left = num('f-income') - num('f-rent') - num('f-food') - num('f-travel') - num('f-save');
+    out.textContent = (left < 0 ? '\u2212' : '') + money(left);
+    out.classList.toggle('over', left < 0);
+  }
+
+  ids.forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener('input', calc);
+    el.addEventListener('change', calc);
+  });
+
+  calc();
+})();
+</script>
+</body>
+</html>
